@@ -7,11 +7,15 @@
     padding: 0;
 }
 body{
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-
+    
+    /* Si elegiste Inter */
+    font-family: 'Inter', sans-serif;
+    
+    /* Si elegiste Montserrat */
+    /* font-family: 'Montserrat', sans-serif; */
 }
+
+
 header{
     background-color: #333333;
     color: white;
