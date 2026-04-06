@@ -152,3 +152,29 @@ button {
 button:hover {
     background-color: #2980b9;
 }
+/* Estilos para cuando el campo es obligatorio y está vacío o mal escrito */
+input:focus:invalid {
+    border: 2px solid #ff4d4d;
+    background-color: #fff5f5;
+    outline: none;
+}
+
+/* Estilos para cuando el dato ingresado es correcto */ commit atomico cambio style*/
+input:focus:valid {
+    border: 2px solid #2ecc71;
+    background-color: #f0fff4;
+    outline: none;
+}
+
+/* Opcional: Agregar un icono o mensaje debajo si querés sumar más estética */
+input:invalid + span::before {
+    content: '✖';
+    color: #ff4d4d;
+    margin-left: 5px;
+}
+
+input:valid + span::before {
+    content: '✔';
+    color: #2ecc71;
+    margin-left: 5px;
+}
