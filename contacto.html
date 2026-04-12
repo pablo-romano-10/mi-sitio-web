@@ -1,98 +1,113 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>TP1-MI-SITIO-WEB</title>
-  
-  
-  <link rel="stylesheet" href="estilo.css">
-  <style>
-        /* Un estilo básico para que se vea ordenado */ cambio commit1
-        body { font-family: sans-serif; max-width: 500px; margin: 20px auto; padding: 20px; }
-        div { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input, textarea, select { width: 100%; padding: 8px; box-sizing: border-box; }
-        input[type="checkbox"] { width: auto; }
-        button { background-color: #007bff; color: white; padding: 10px 15px; border: none; cursor: pointer; }
-        button:hover { background-color: #0056b3; }
-    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Pablo Romano</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilo.css">
 </head>
-
-  <body>
-    <header>
-      <h1>PABLO ROMANO</h1>
-
-      <p>BIENVENIDOS A MI SITIO  WEB </p>
-    </header>
-<nav>
+<body>
+    <div class="layout sin-sidebar">
+<header>
+    <div class="logo">
+    <h1>PABLO ROMANO </h1>
+    <p>Estudiante de la tecnicatura superior de analista de sistemas y desarrollador de software </p>
+  </div>
+  <nav>
+    <a href="index.html#Inicio">Inicio</a>
+    <a href="index.html#Sobre-mi">Sobre mi</a>
+    <a href="index.html#Proyectos">Proyectos</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+</header>
+        <aside class="sidebar">
+        <h3>Navegación</h3>
         <ul>
             <li><a href="index.html#inicio">Inicio</a></li>
             <li><a href="index.html#sobre-mi">Sobre mí</a></li>
+            <li><a href="index.html#Proyectos">Proyectos</a></li>
             <li><a href="contacto.html">Contacto</a></li>
         </ul>
-    </nav>
-<main>
-        
-        <section id="contacto" class="section-container"> 
-            
-            <h1 class="title">Contactame</h1>
-                <p>¡Contáctame para más información!</p>
-                <form action="" class="form-container">
-                    <form action="/registro" method="POST">
-                        
+</aside>
+       <main>
+ 
+        <section id="contacto">
+            <h2>Formulario de Contacto</h2>
+ 
+            <form action="#" method="post" novalidate>     
+        <label for="nombre">Nombre completo:</label>
 
-                    </form>   
-                    <section id="Contacto">
-                    <h1>Formulario de Contacto</h1> 
-                     
-                    <form
- /* para obtener datos del usuario */
-<label for="nombre">Nombre completo:</label>
-
-<input type="text" id="nombre" name="nombre"
+        <input type="text" id="nombre" name="nombre"
 
 placeholder="Ej: Juan Pérez" required minlength="3">
 
-<label for="email">Correo electrónico:</label>
+    <label for="email">Correo electrónico:</label>
 
-<input type="email" id="email" name="email"
+    <input type="email" id="email" name="email"
 
 placeholder="juan@mail.com" required>
 
-<input type="email" id="email" name="email" required>
 
-<span></span> <!-- Aquí aparecerá el icono de check o cruz -->
+    <span></span> 
 
-<label for="edad">Edad:</label>
-
-<input type="number" id="edad" name="edad"
-placeholder="18"required>
-<div>
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" placeholder="Ej: 1122334455">
-            <small>Formato: 10 números sin espacios</small>
-        </div>
-        <div>
-            <input type="checkbox" id="terminos" name="terminos" required>
-            <label for="terminos" style="display: inline;">Acepto los términos y condiciones</label>
-        </div>
-
-
- <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" name="mensaje" required></textarea>
-                    
-                    <button type="submit">Enviar</button>
-                </form>
-            </div>
-            </section>
+<label for="telefono">Teléfono</label>
+                <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    pattern="[0-9]{10}"
+                    placeholder="Ej: 1122334455"
+                >
+                <small>Formato: 10 números sin espacios</small>
+ 
+                <label for="motivo">Motivo de contacto *</label>
+                <select id="motivo" name="motivo" required>
+                    <option value="">-- Seleccioná una opción --</option>
+                    <option value="consulta">Consulta general</option>
+                    <option value="colaboracion">Colaboración</option>
+                    <option value="otro">Otro</option>
+                </select>
+ 
+                <label for="mensaje">Mensaje *</label>
+                <textarea
+                    id="mensaje"
+                    name="mensaje"
+                    placeholder="Ej: Me comunico con usted con la razón de..."
+                    required
+                    minlength="10"
+                ></textarea>
+                <span></span>
+ 
+                <label class="checkbox-label">
+                    <input type="checkbox" name="terminos" required>
+                    Acepto los Términos y condiciones *
+                </label>
+ 
+                <button type="submit">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Enviar mensaje
+                </button>
+ 
+            </form>
         </section>
+ 
     </main>
+
     <footer>
-        <p>&copy; 2026 PABLO ROMANO. Todos los derechos reservados.</p>
+        <p>&copy;2026  Todo los derechos reservados</p>
+        <div class="redes">
+            <a href="https://github.com/"pablo-romano-10 target="_blank" aria-label="Github de Antonio">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.instagram.com/pablo romano_" target="_blank" aria-label="instagram de Antonio">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
     </footer>
+    </div>
 </body>
 </html>

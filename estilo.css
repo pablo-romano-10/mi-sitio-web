@@ -1,184 +1,418 @@
 
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-body{
-    
-    /* Si elegiste Inter */
-    font-family: 'Inter', sans-serif;
-    
-    /* Si elegiste Montserrat */
-    /* font-family: 'Montserrat', sans-serif; */
+html {
+    font-size: 16px; /* Define que 1rem = 16px */
 }
 
+ :root {
+    --color-primary:    #2E75B6;
+    --color-secondary:  #1B2A4A;
+    --color-accent:     #F59E0B;
+    --color-text:       #334155;
+    --color-text-muted: #94a3b8;
+    --color-bg:         #F8FAFC;
+    --color-surface:    #ffffff;
+    --color-border:     #e2e8f0;
+    --radius:           8px;
+    --radius-pill:      999px;
+    --shadow:           0 2px 8px rgba(0,0,0,0.1);
+    --font-main:        "DM Sans", "Segoe UI", Arial, sans-serif;
+}
 
-header{
-    background-color: #333333;
+ 
+html {
+    font-size: 16px;
+}
+ 
+body {
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; color: #333; margin-bottom: 1rem; }
+h3 { font-size: 1.1rem; }
+p  { margin-bottom: 1rem; }
+
+.layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-areas:
+        "header  header"
+        "sidebar main"    /* ← sidebar tiene que estar acá */
+        "footer  footer";
+}
+ 
+@media (min-width: 768px) {
+    .layout {
+        grid-template-columns: 200px 1fr;
+        grid-template-areas:
+            "header  header"
+            "sidebar main"
+            "footer  footer";
+    }
+ 
+    .sidebar { display: block; }
+ 
+    header {
+        flex-direction: row;
+        height: 64px;
+        padding: 0 2rem;
+    }
+}
+ 
+@media (min-width: 1024px) {
+    .layout {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+ 
+
+
+header {
+    grid-area: header;
+    background-color: #6b21a8;
     color: white;
-    padding: 20px;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
-nav{
-    background-color: #444444;
-    padding: 10px;
+ 
+header .logo h1 {
+    font-size: 1.25rem;
+    color: white;
 }
+ 
+header .logo p {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+nav {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
 nav a {
+    color: rgba(255, 255, 255, 0.80);
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius);
+    transition: background 0.25s,color 0.25s;
+}
+ 
+nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background:#f1f5f9;
+    padding: 2rem 1rem;
+    border-right: 1px solid var(--color-border);
+    display: none; 
+}
+@media (min-width: 768px) {
+    .sidebar {
+        display: block; 
+    }
+}
+.sidebar h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+ 
+.sidebar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+ 
+.sidebar ul li a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+ 
+.sidebar ul li a:hover {
+    color: #6b21a8;
+}
+.sin-sidebar {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+}
+
+.sin-sidebar .sidebar {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+main {
+    grid-area: main;
+    padding: 2rem 1rem;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
+    background: linear-gradient(135deg, #1a1a2e, #6b21a8);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+}
+ 
+.hero-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+ 
+.hero-contenido h1 { font-size: 2.2rem; color: white; }
+ 
+.hero-titulo {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.80);
+}
+ 
+.hero-btn {
+    padding: 0.75rem 2rem;
+    background: var(--color-accent);
     color: white;
     text-decoration: none;
-    margin-right: 15px;
-
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: background 0.25s, transform 0.25s;
 }
-nav a:hover{
-    color: yellow;
+ 
+.hero-btn:hover {
+    background: #9333ea;
+    transform: translateY(-2px);
 }
-footer{
-    background-color: #444444;
-    color: white;
-    padding: 20px;
-    text-align: center;
+.section-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
 }
-main{
-    padding: 20px;
-}
-section{
-    margin-bottom: 30px;
-}
-h2{
-    color:#333333
-}
-p{
-    margin-bottom: 20px;
-}
-img{
+ 
+.section-container > div { flex: 1 1 260px; }
+ 
+.contenedor { display: flex; justify-content: center; }
+ 
+img {
     width: 200px;
     height: 200px;
     object-fit: cover;
     border-radius: 50%;
+    display: block;
 }
-.contenedor{
-    display: flex;
-    justify-content: center;
+
+#Proyectos {
+    margin-bottom: 2rem;
 }
-h2{
+ 
+#Proyectos h2 {
     text-align: center;
+    margin-bottom: 1.5rem;
 }
-/* Borde verde cuando el campo es válido */
-
-input:valid {
-
-border: 2px solid #16A34A;
-
-background-color: #F0FFF4;
-
+ 
+.Tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
 }
-
-/* Borde rojo cuando el campo es inválido */
-
-input:invalid {
-
-border: 2px solid #DC2626;
-
-background-color: #FEF2F2;
-
-}
-/* (d) Estilos generales del formulario */
-form {
-    max-width: 450px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
+ 
+.Tarjeta {
+    padding: 1.5rem;
+    background: var(--color-surface);
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+ 
+.Tarjeta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+ 
+.Tarjeta h3 { color: #333; margin-bottom: 0.5rem; }
+.Tarjeta p  { color: var(--color-text); margin: 0; }
+ 
+
+#contacto {
+    max-width: 520px;
+    margin: 0 auto;
+}
+ 
+#contacto h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+ 
 label {
     display: block;
-    margin-bottom: 8px;
     font-weight: 600;
     color: #444;
+    margin-top: 0.6rem;
 }
 
-input, textarea, select {
-    width: 100%; /* (d) Ancho al 100% */
-    padding: 12px; /* (d) Padding interno */
-    margin-bottom: 15px;
-    border: 2px solid #ddd;
-    border-radius: 8px; /* (d) Border-radius */
-    font-size: 16px;
-    box-sizing: border-box; /* Para que el padding no desborde el ancho */
-    transition: all 0.3s ease; /* Transición suave para todos los cambios */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: normal;
+    cursor: pointer;
 }
-
-/* (c) Estilos para input:focus */
-input:focus, textarea:focus, select:focus {
-    outline: none;
-    border-color: #3498db; /* Borde azul */
-    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3); /* Box-shadow sutil */
+ 
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    margin: 0;
 }
-
-/* (a) Estilos para input:valid */
-/* El campo se pone verde solo cuando la validación de HTML5 es exitosa */
-input:valid, textarea:valid {
-    border-color: #2ecc71; /* Borde verde */
-    background-color: #f0fff4; /* Fondo verde claro */
-}
-
-/* (b) Estilos para input:invalid */
-/* :not(:placeholder-shown) evita que el campo esté rojo antes de que el usuario escriba */
-input:invalid:not(:placeholder-shown), 
-textarea:invalid:not(:placeholder-shown) {
-    border-color: #e74c3c; /* Borde rojo */
-    background-color: #fff5f5; /* Fondo rojo claro */
-}
-
-/* Estilo para el botón de envío */
-button {
+ 
+input,
+textarea,
+select {
     width: 100%;
-    padding: 14px;
-    background-color: #3498db;
+    padding: 0.65rem 0.75rem;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-family: var(--font-main);
+    background: white;
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+ 
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+ 
+small {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #4A90E2;
+    box-shadow: 0 0 0 4px rgba(74,144,226,0.12);
+    background: white;
+}
+
+input:not(:placeholder-shown):valid,
+textarea:not(:placeholder-shown):valid {
+    border-color: #2ecc71;
+    background-color: #f0fff4;
+}
+
+input:not(:placeholder-shown):invalid,
+textarea:not(:placeholder-shown):invalid {
+    border-color: #e74c3c;
+    background-color: #fff5f5;
+}
+
+input:not(:placeholder-shown):valid   + span::before { content: '✔'; color: #2ecc71; margin-left: 4px; }
+input:not(:placeholder-shown):invalid + span::before { content: '✖'; color: #e74c3c; margin-left: 4px; }
+
+button[type="submit"] {
+    margin-top: 1rem;
+    padding: 0.85rem;
+    background-color: #333;
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: bold;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background 0.3s, transform 0.2s;
+}
+ 
+button[type="submit"]:hover {
+    background-color: #555;
+    transform: translateY(-2px);
 }
 
-button:hover {
-    background-color: #2980b9;
+footer {
+    grid-area: footer;
+    background: linear-gradient(135deg, #1a1a2e, #6b21a8);
+    color: rgba(255,255,255,0.75);
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
-/* Estilos para cuando el campo es obligatorio y está vacío o mal escrito */
-input:focus:invalid {
-    border: 2px solid #ff4d4d;
-    background-color: #fff5f5;
-    outline: none;
+ 
+.redes {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
 }
+ 
+.redes a {
+    color: rgba(255,255,255,0.75);
+    font-size: 1.8rem;
+    text-decoration: none;
+    transition: color 0.25s;
+}
+ 
+.redes a:hover { color: var(--color-accent); }
 
-/* Estilos para cuando el dato ingresado es correcto */ commit atomico cambio style*/
-input:focus:valid {
-    border: 2px solid #2ecc71;
-    background-color: #f0fff4;
-    outline: none;
+@media (max-width: 600px) {
+    .section-container { flex-direction: column; }
+    .Tarjetas { grid-template-columns: 1fr; }
+    header { flex-direction: column; align-items: flex-start; }
 }
-
-/* Opcional: Agregar un icono o mensaje debajo si querés sumar más estética */
-input:invalid + span::before {
-    content: '✖';
-    color: #ff4d4d;
-    margin-left: 5px;
-}
-
-input:valid + span::before {
-    content: '✔';
-    color: #2ecc71;
-    margin-left: 5px;
-}
-form { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-/*contenedor de sombras*/
-input:focus { border-color: #4A90E2; background: white; box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.1); }
-/*foco interactivo*/
